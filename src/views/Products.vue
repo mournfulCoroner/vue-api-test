@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       products: [],
+      loading: false
     };
   },
   mounted() {

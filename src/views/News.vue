@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <pagination :items="news" :perPage=3 ></pagination>
+    <pagination :pageInfo="pageInfo" :items="news" :perPage=3 ></pagination>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   name: "News",
   data() {
     return {
-      msg: "News",
+      pageInfo: "News",
       news: []
     };
   },

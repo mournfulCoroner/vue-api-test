@@ -2,25 +2,26 @@
   <div>
     <div v-for="item in itemsForList" :key="item.id">
       <b-card
-        :title="item.name"
-        :sub-title="item.product_type"
-        class="product_card"
+        :title="item.title"
+        class="news_card"
       >
 
-        <card-image :src="item.image"></card-image>
+        <template #header>
+            {{ item.author.name }}
+        </template>
+
+        <card-image v-if="item.image" ></card-image>
 
         <b-card-text class="card_text">
-          {{ item.description }}
+          {{ item.text }}
         </b-card-text>
 
-        <b-card-text> Цена: {{ item.price }}</b-card-text>
         <template #footer>
           Created at {{ item.created_at }}
           <br />
-          <p v-if="item.created_at !== item.updated_at">
-            Last updated at {{ item.updated_at }}
-          </p>
+          <p v-if="item.created_at !== item.updated_at">Last updated at {{ item.updated_at }}</p>
         </template>
+        
       </b-card>
     </div>
   </div>
@@ -42,7 +43,10 @@ export default {
     perPage: {
       type: Number,
       default: 3,
-    }
+    },
+  },
+  data() {
+    return {};
   },
   computed: {
     itemsForList() {
@@ -56,8 +60,9 @@ export default {
 </script>
 
 <style>
-.product_card {
+.news_card {
   max-width: 50rem;
-  margin: 20px auto;
+  margin: auto;
+  margin-top: 20px;
 }
 </style>

@@ -11,32 +11,34 @@
         align="center"
       ></b-pagination>
     </div>
-    <!-- <b-table
-      id="my-table"
-      :items="items"
-      :per-page="perPage"
-      :current-page="currentPage"
-      small
-    ></b-table> -->
-    <product-block id="cards" :items="items" :per-page="perPage"
-      :current-page="currentPage"></product-block>
+
+    <product-block v-if="pageInfo === 'Products'" id="cards" :items="items" :per-page="perPage"
+      :current-page="currentPage" ></product-block>
+    <news-block v-else id="cards" :items="items" :per-page="perPage"
+      :current-page="currentPage"></news-block>
      
   </div>
 </template>
 
 <script>
-import ProductBlock from './ProductBlock.vue';
+import NewsBlock from '@/components/NewsBlock.vue'
+import ProductBlock from '@/components/ProductBlock.vue'
+
 export default {
-  components: { ProductBlock },
+  components: { ProductBlock, NewsBlock },
   props: {
     items: {
       type: Array,
-      require,
+      required: true,
     },
     perPage: {
       type: Number,
       default: 9,
     },
+    pageInfo: {
+        type: String,
+        default: 'Products'
+    }
   },
   data() {
     return {
