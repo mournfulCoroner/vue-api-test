@@ -1,16 +1,26 @@
 <template>
   <div class="products">
-    <pagination :items="[{ id: 1, first_name: 'Fred', last_name: 'Flintstone' },
-          { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
-          { id: 3, first_name: 'Barney', last_name: 'Rubble' }]"></pagination>
+    <pagination :items="products" :perPage="3"></pagination>
   </div>
 </template>
 
 <script>
-import Pagination from '../components/Pagination.vue';
+import Pagination from "../components/Pagination.vue";
+import { gettingApi } from "@/api/api";
+
 export default {
   components: { Pagination },
-  name: "Products"
+  name: "Products",
+  data() {
+    return {
+      products: [],
+    };
+  },
+  mounted() {
+    gettingApi.getProducts().then((data) => {
+      this.products = data;
+    });
+  },
 };
 </script>
 

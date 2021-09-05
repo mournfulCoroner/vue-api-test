@@ -6,23 +6,28 @@
         :total-rows="rows"
         :per-page="perPage"
         pills
-        aria-controls="my-table"
+        aria-controls="cards"
         class="m-20"
         align="center"
       ></b-pagination>
     </div>
-    <b-table
+    <!-- <b-table
       id="my-table"
       :items="items"
       :per-page="perPage"
       :current-page="currentPage"
       small
-    ></b-table>
+    ></b-table> -->
+    <product-block id="cards" :items="items" :per-page="perPage"
+      :current-page="currentPage"></product-block>
+     
   </div>
 </template>
 
 <script>
+import ProductBlock from './ProductBlock.vue';
 export default {
+  components: { ProductBlock },
   props: {
     items: {
       type: Array,
