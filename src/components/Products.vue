@@ -1,17 +1,17 @@
 <template>
-  <div class="hello">
+  <div class="products">
     <h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Products",
   data() {
     return {
-      msg: "This is the test task with Vue and Bootstrap"
+      msg: "Products",
     };
-  }
+  },
 };
 </script>
 
