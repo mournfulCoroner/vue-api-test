@@ -1,5 +1,20 @@
 <template>
   <div class="overflow-auto">
+    <product-block
+      v-if="pageInfo === 'Products'"
+      id="cards"
+      :items="items"
+      :per-page="perPage"
+      :current-page="currentPage"
+    ></product-block>
+    <news-block
+      v-else
+      id="cards"
+      :items="items"
+      :per-page="perPage"
+      :current-page="currentPage"
+    ></news-block>
+
     <div class="mt-3">
       <b-pagination
         v-model="currentPage"
@@ -9,20 +24,15 @@
         aria-controls="cards"
         class="m-20"
         align="center"
+        @click="scrollUp"
       ></b-pagination>
     </div>
-
-    <product-block v-if="pageInfo === 'Products'" id="cards" :items="items" :per-page="perPage"
-      :current-page="currentPage" ></product-block>
-    <news-block v-else id="cards" :items="items" :per-page="perPage"
-      :current-page="currentPage"></news-block>
-     
   </div>
 </template>
 
 <script>
-import NewsBlock from '@/components/NewsBlock.vue'
-import ProductBlock from '@/components/ProductBlock.vue'
+import NewsBlock from "@/components/NewsBlock.vue";
+import ProductBlock from "@/components/ProductBlock.vue";
 
 export default {
   components: { ProductBlock, NewsBlock },
@@ -36,9 +46,9 @@ export default {
       default: 9,
     },
     pageInfo: {
-        type: String,
-        default: 'Products'
-    }
+      type: String,
+      default: "Products",
+    },
   },
   data() {
     return {
@@ -50,5 +60,8 @@ export default {
       return this.items.length;
     },
   },
+  updated(){
+      window.scrollTo(0, 0)
+  }
 };
 </script>
