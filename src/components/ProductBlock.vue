@@ -9,8 +9,8 @@
 
         <card-image :src="item.image"></card-image>
 
-        <b-card-text class="card_text">
-          {{ item.description }}
+        <b-card-text v-html="item.description" class="card_text">
+          <!-- {{ item.description }} -->
         </b-card-text>
 
         <b-card-text> Цена: {{ item.price }}</b-card-text>
