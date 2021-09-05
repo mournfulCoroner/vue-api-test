@@ -1,26 +1,21 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">News</router-link> |
-      <router-link to="/about">Products</router-link>
-    </div> -->
-    <div>
-      <b-navbar toggleable="lg" type="dark" variant="info">
-        <b-navbar-brand href="#">Navigation</b-navbar-brand>
-
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item href="#"><router-link to="/news">News</router-link></b-nav-item>
-            <b-nav-item href="#"><router-link to="/products">Products</router-link></b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
+    <nav-bar></nav-bar>
     <router-view />
   </div>
 </template>
+
+
+<script>
+import NavBar from './components/NavBar.vue'
+
+export default {
+  components: {
+    NavBar
+  }
+}
+</script>
+
 
 <style>
 #app {
